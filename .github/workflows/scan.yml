@@ -9,7 +9,7 @@ env:
   # The password for this user account
   TL_PASS: ${{ secrets.TL_PASS }}
   # The base URL for the Console -- http://console.<my_company>.com:8083 -- without a trailing /
-  TL_CONSOLE_URL: https://us-east1.cloud.twistlock.com/us-1-111573457
+  TL_CONSOLE_URL: ${{ secrets.TL_CONSOLE_URL }}
   CONTAINER_IMAGE: name/tag:${{ github.sha }}
 
 jobs:
