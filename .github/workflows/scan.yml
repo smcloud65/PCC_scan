@@ -23,7 +23,7 @@ jobs:
       
     - name: Download twistcli from Prisma Cloud Console
       run: |
-        curl -k -u $TL_USER -p $TL_PASS --output ./twistcli $TL_CONSOLE_URL/us-1-111573457/api/v1/util/twistcli
+        curl -k -u $TL_USER -p $TL_PASS --output ./twistcli https://us-east1.cloud.twistlock.com/us-1-111573457/us-1-111573457/api/v1/util/twistcli
         # ...and ensure it's executable.
         sudo chmod a+x ./twistcli
       
