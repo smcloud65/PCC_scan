@@ -1,1 +1,1 @@
-# demo scan
+# demo CI with security scan
