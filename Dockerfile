@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL version="1.0"
+LABEL version="1.1"
 LABEL description="Test with Labels & Env Variables in Image"
 LABEL deployment="dev"
 
