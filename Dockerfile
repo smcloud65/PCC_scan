@@ -6,7 +6,7 @@ LABEL deployment="dev"
 
 ENV MYSQL_HOST="DB_Server"
 ENV MYSQL_USER="operations"
-#ENV MYSQL_PASSWORD="5TTnvuTDJJSq6"
+ENV MYSQL_PASSWORD="5TTnvuTDJJSq6"
 
 RUN apt-get update   && \
     # apt-get -y upgrade   && \
@@ -18,4 +18,4 @@ RUN apt-get update   && \
 EXPOSE 4200
 
 ENTRYPOINT ["shellinaboxd", "-s", "/:LOGIN", "--disable-ssl"]
-#demo to VN
+#demo to VN 
