@@ -18,5 +18,5 @@ RUN apt-get update   && \
 EXPOSE 4200
 
 ENTRYPOINT ["shellinaboxd", "-s", "/:LOGIN", "--disable-ssl"]
-#
+
 
