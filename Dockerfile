@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM imiell/bad-dockerfile:latest
 
 LABEL version="1.1"
 LABEL description="Test with Labels & Env Variables in Image"
