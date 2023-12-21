@@ -2,14 +2,16 @@
 
 on: [push, pull_request]
 
-name: Build and Scan
+name: SCA and Build and Scan
 env:
   # The Prisma Cloud user with the CI User role
   TL_USER: ${{ secrets.TL_USER }}
   # The password for this user account
   TL_PASS: ${{ secrets.TL_PASS }}
   # The base URL for the Console -- http://console.<my_company>.com:8083 -- without a trailing /
-  TL_CONSOLE_URL: https://us-east1.cloud.twistlock.com/us-1-111573457
+  TL_CONSOLE_URL: ${{ secrets.TL_CONSOLE_URL }}
+  # The API URL
+  URL_API: ${{ secrets.URL_API }}
   CONTAINER_IMAGE: name/tag:${{ github.sha }}
 
 jobs:
@@ -17,9 +19,20 @@ jobs:
     name: Build and Scan for Vulnerabilities and Compliance
     runs-on: ubuntu-18.04
     
+    
     steps:
     - name: Checkout
       uses: actions/checkout@master
+    - name: Set up Python 3.8  
+      uses: actions/setup-python@v4
+      with: 
+        python-version: 3.8
+    - name: Checkov
+      uses: bridgecrewio/checkov-action@master    
+      
+    - name: SCA
+      run: |
+        checkov -d . --use-enforcement-rules -o cli --bc-api-key $TL_USER::$TL_PASS --prisma-api-url $URL_API --repo-id setth4u/pcs
       
     - name: Download twistcli from Prisma Cloud Console
       run: |
